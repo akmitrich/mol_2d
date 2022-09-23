@@ -6,6 +6,7 @@ mod resources;
 const N_MOL: &str = "N_MOL";
 const DENSITY: &str = "DENSITY";
 const DELTA_T: &str = "DELTA_T";
+const TAU: &str = "TAU";
 const SCALE_X: f32 = 50.;
 const SCALE_Y: f32 = 50.;
 const SCALE_Z: f32 = 0.;

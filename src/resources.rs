@@ -2,12 +2,13 @@ use bevy::prelude::*;
 use d_vector::{DVector, Real};
 use mol_job::{boundaries::Region, initial_state::cubic_lattice};
 
-use crate::{DELTA_T, DENSITY, N_MOL};
+use crate::{DELTA_T, DENSITY, N_MOL, TAU};
 
 pub struct Settings {
     pub n_mol: usize,
     pub density: Real,
     pub delta_t: Real,
+    pub tau: Real,
 }
 
 pub struct Textures {
@@ -71,9 +72,14 @@ fn load_env() -> Settings {
         .unwrap_or_default()
         .parse::<Real>()
         .unwrap_or(0.005 as Real);
+    let tau = std::env::var(TAU)
+        .unwrap_or_default()
+        .parse::<Real>()
+        .unwrap_or(2.16e-12) * 1.0e+9;
     Settings {
         n_mol,
         density,
         delta_t,
+        tau,
     }
 }

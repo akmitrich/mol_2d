@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use crate::{resources::{TimeNow, Wrapper}, SCALE_Y};
+use crate::{resources::{Settings, TimeNow, Wrapper}, SCALE_Y};
 
 pub struct GraphicsPlugin;
 
@@ -39,10 +39,11 @@ fn setup(
 }
 
 fn update(
+    settings: Res<Settings>,
     time: Res<TimeNow>,
     mut query: Query<&mut Text, With<TimeText>>,
 ) {
     for mut text in query.iter_mut() {
-        text.sections[0].value = format!("Time: {:.3}", time.0);
+        text.sections[0].value = format!("Time: {:.4} ns", time.0 * settings.tau);
     }
 }
