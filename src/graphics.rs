@@ -43,7 +43,7 @@ fn update(
     time: Res<TimeNow>,
     mut query: Query<&mut Text, With<TimeText>>,
 ) {
-    for mut text in query.iter_mut() {
+    if let Ok(mut text) = query.get_single_mut() {
         text.sections[0].value = format!("Time: {:.4} ns", time.0 * settings.tau);
     }
 }

@@ -18,19 +18,7 @@ pub struct Textures {
 pub type MolVector = DVector<3>;
 pub struct Pos(pub Vec<MolVector>);
 
-impl AsMut<[MolVector]> for Pos {
-    fn as_mut(&mut self) -> &mut [MolVector] {
-        self.0.as_mut()
-    }
-}
-
 pub struct Vel(pub Vec<MolVector>);
-
-impl AsMut<[MolVector]> for Vel {
-    fn as_mut(&mut self) -> &mut [MolVector] {
-        self.0.as_mut()
-    }
-}
 
 pub struct Acc(pub Vec<MolVector>);
 
